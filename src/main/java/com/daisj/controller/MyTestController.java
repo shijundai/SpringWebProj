@@ -5,6 +5,12 @@ package com.daisj.controller;/**
  * @date 2020/7/31
  */
 
+import com.daisj.mapper.DepartMapper;
+import com.daisj.mapper.UserMapper;
+import com.daisj.mapper.entity.DepartEntity;
+import com.daisj.mapper.entity.UserEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,15 +25,28 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MyTestController {
 
-    @RequestMapping("myTest")
-    @ResponseBody
-    public String myTest() {
-        return "myTest";
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
+    private DepartMapper deptMapper;
+
+    @RequestMapping("queryUser/{id}")
+    public UserEntity queryUser(@PathVariable Long id) {
+        UserEntity user = userMapper.queryUserById(id);
+        return user;
     }
 
+    @RequestMapping("queryDept/{id}")
+    public DepartEntity queryDept(@PathVariable Long id) {
+        DepartEntity dept = deptMapper.queryDepartById(id);
+        return dept;
+    }
 
-    @RequestMapping("myHello")
-    public String myHello() {
-        return "myHello";
+    @RequestMapping("saveUser")
+    public String saveUser(UserEntity entity) {
+        int result = userMapper.saveUser(entity);
+        return String.valueOf(result);
     }
 }

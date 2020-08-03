@@ -5,7 +5,10 @@ package com.daisj;/**
  * @date 2020/7/31
  */
 
+import com.daisj.mapper.UserMapper;
+import com.daisj.mapper.DepartMapper;
 import com.daisj.webserver.TomcatServer;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
@@ -20,7 +23,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 public class Main {
 
     public static void main(String[] args) {
-
+//        com.mysql.jdbc.Driver;
         AnnotationConfigWebApplicationContext acw = new AnnotationConfigWebApplicationContext();
         acw.register(Main.class);
         acw.refresh();
