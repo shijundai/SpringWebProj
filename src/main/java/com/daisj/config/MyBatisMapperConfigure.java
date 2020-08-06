@@ -9,6 +9,7 @@ import com.daisj.mapper.UserMapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.mapper.MapperFactoryBean;
+import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -26,5 +27,17 @@ public class MyBatisMapperConfigure {
 //        return mapperFactoryBean.getObject();
 //    }
 
+    /**
+     * 作用和@MapperScan类似
+     * @return
+     */
+//    @Bean
+//    public MapperScannerConfigurer mapperScannerConfigurer() {
+//        System.out.println("=================getMapperScannerConfigurer=====================");
+//        MapperScannerConfigurer conf = new MapperScannerConfigurer();
+//        conf.setBasePackage("com.daisj.mapper");
+//        conf.setSqlSessionFactoryBeanName("sqlSessionFactory");
+//        return conf;
+//    }
 
 }

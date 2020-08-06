@@ -24,8 +24,8 @@ import javax.sql.DataSource;
  *@Version 1.0
  **/
 @Configuration
-@MapperScan("com.daisj.mapper")
 @PropertySource("classpath:myConfig.properties")
+@MapperScan("com.daisj.mapper")
 public class MyConfigure {
 
     @Value("${jdbc.url}")
@@ -37,9 +37,17 @@ public class MyConfigure {
     @Value("${jdbc.password}")
     private String password;
 
+    public MyConfigure() {
+        System.out.println("==================MyConfigure=================");
+    }
+
 
     @Bean
-    public DataSource getDataSource() {
+    public DataSource dataSource() {
+        System.out.println("=================getDataSource=====================");
+        System.out.println("==url:"+url);
+        System.out.println("==driver:"+driver);
+        System.out.println("==username:"+username);
         DruidDataSource datasource = new DruidDataSource();
         datasource.setUrl(url);
         datasource.setDriverClassName(driver);
@@ -48,8 +56,9 @@ public class MyConfigure {
         return datasource;
     }
 
-    @Bean
+    @Bean("sqlSessionFactory")
     public SqlSessionFactory getSqlSessionFactory(DataSource dataSource) {
+        System.out.println("=================sqlSessionFactory=====================");
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSource);
         try {
@@ -61,6 +70,7 @@ public class MyConfigure {
         }
         return null;
     }
+
 
 
 }
