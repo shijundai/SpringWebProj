@@ -17,11 +17,8 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
 /**
- *@ClassName MyContextInitaltion
- *@Description TODO
- *@Author Administrator
- *@Date 2020/7/31 11:44
- *@Version 1.0
+ * tomcat启动会通过spi加载spring的SpringServletContainerInitializer类 该接口实现了ServletContainerInitializer接口
+ *
  **/
 @Component
 public class MyContextInitaltion implements ApplicationContextAware, WebApplicationInitializer {
